@@ -37,7 +37,7 @@ const RegisterForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            axios.post('http://localhost:3000/api/user/register', values, { withCredentials: true })
+            axios.post('http://arocseback.cluster-ig3.igpolytech.fr/api/user/register', values, { withCredentials: true })
                 .then(response => {
                     console.log('Nouveau client créé');
                     console.log(response.data);

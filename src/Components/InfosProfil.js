@@ -35,10 +35,10 @@ const InfosProfil = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/user', { withCredentials: true });
+                const response = await axios.get('http://arocseback.cluster-ig3.igpolytech.fr/api/user', { withCredentials: true });
                 setUser(response.data);
 
-                const scoresResponse = await axios.get(`http://localhost:3000/api/scores/${response.data.name}`);
+                const scoresResponse = await axios.get(`http://arocseback.cluster-ig3.igpolytech.fr/api/scores/${response.data.name}`);
                 setScores(scoresResponse.data);
             } catch (error) {
                 console.error('Error fetching user:', error);

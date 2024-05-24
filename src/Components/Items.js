@@ -70,7 +70,7 @@ const Items = () => {
         const fetchProducts = async () => {
 
             try {
-                const response = await axios.get('http://localhost:3000/api/items');
+                const response = await axios.get('http://arocseback.cluster-ig3.igpolytech.fr/api/items');
                 console.log("data response : ", response.data);
                 setProducts(response.data);
             } catch (error) {

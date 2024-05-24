@@ -30,7 +30,7 @@ const SigninForm = () => {
         setError(''); // Réinitialiser les erreurs
 
         try {
-            const response = await fetch('http://localhost:3000/api/user/signin', {
+            const response = await fetch('http://arocseback.cluster-ig3.igpolytech.fr/api/user/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

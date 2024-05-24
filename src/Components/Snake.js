@@ -248,7 +248,7 @@ const SnakeGame = () => {
 
     const handleSubmitScore = async () => {
         try {
-            await axios.post('http://localhost:3000/api/scores', { playerName, score: currentScore });
+            await axios.post('http://arocseback.cluster-ig3.igpolytech.fr/api/scores', { playerName, score: currentScore });
             setShowInput(false);
             console.log("ajout nouveau score", playerName, currentScore);
             setPlayerName('');
@@ -262,7 +262,7 @@ const SnakeGame = () => {
 
     const fetchLeaderboard = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/scores');
+            const response = await axios.get('http://arocseback.cluster-ig3.igpolytech.fr/api/scores');
             setLeaderboard(response.data);
         } catch (error) {
             console.error("Error fetching leaderboard:", error);
@@ -272,7 +272,7 @@ const SnakeGame = () => {
     const deleteScore = async (id) => {
         try {
             console.log("suppression du score : ", id);
-            await axios.delete(`http://localhost:3000/api/scores/${id}`);
+            await axios.delete(`http://arocseback.cluster-ig3.igpolytech.fr/api/scores/${id}`);
             fetchLeaderboard(); // Mettre à jour le leaderboard après la suppression
         } catch (error) {
             console.error("Error deleting score:", error);
@@ -284,7 +284,7 @@ const SnakeGame = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/user', { withCredentials: true });
+                const response = await axios.get('http://arocseback.cluster-ig3.igpolytech.fr/api/user', { withCredentials: true });
 
                 console.log(response);
 
