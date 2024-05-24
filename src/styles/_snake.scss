@@ -1,0 +1,12 @@
+.square_grid {
+    border: 2px solid black;
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tile {
+    border: 1px solid rgb(24, 24, 24);
+    aspect-ratio: 1 / 1;
+    width: 30px;
+}
