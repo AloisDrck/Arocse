@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "font-1";
+  src: url(../assets/fonts/Roboto-Regular.ttf);
+}
+
+$font-1: "font-1", sans-serif;
+
+$color-1: #3C486B;
+$color-2: #F9D949;
+$color-3: #F45050;
+$white: #F0F0F0;
+
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-left: 5%;
+  margin-right: 5%;
+  background: $white;
+  font-family: $font-1;
+  // @include verticalCenter;
+}
+
+li {
+  list-style-type: none;
+}
