@@ -60,7 +60,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
 }));
 
 const Items = () => {
-    const [rangeValue, setRangeValue] = useState(12)
+    const [rangeValue, setRangeValue] = useState(36)
     const [selectedRadio, setSelectedRadio] = useState("")
     const [showFilters, setShowFilters] = useState(false)
     const [products, setProducts] = useState([]);
@@ -98,7 +98,7 @@ const Items = () => {
                         {showFilters && (
                             <Card style={{ marginTop: '17.5px', borderRadius: '25px' }} >
                                 <ul style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0', padding: '0' }}>
-                                    <IOSSlider aria-label="slide rangeValue" defaultValue={12} valueLabelDisplay="on" onChange={(e) => setRangeValue(e.target.value)} min={1} max={46} />
+                                    <IOSSlider aria-label="slide rangeValue" defaultValue={36} valueLabelDisplay="on" onChange={(e) => setRangeValue(e.target.value)} min={1} max={46} />
                                     {/* <input type="range" min="1" max="46" defaultValue={rangeValue} onChange={(e) => setRangeValue(e.target.value)} style={{ marginRight: '45px' }} /> */}
                                     <FormControl>
                                         <FormLabel id="demo-row-radio-buttons-group-label" style={{ transform: 'scale(0.75)' }}>Catégories</FormLabel>
@@ -154,7 +154,7 @@ const Items = () => {
                             .slice(0, rangeValue)
                             .map((product, index) => (
                                 <Grid xs={3} sm={3} md={3} key={product._id}>
-                                    <Card sx={{ maxWidth: 445 }} style={{ height: '400px', borderRadius: '25px' }} key={index}>
+                                    <Card sx={{ maxWidth: 445 }} style={{ height: '400px', borderRadius: '25px', opacity: '0.99' }} key={index}>
                                         <CardActionArea style={{ height: '400px', display: 'flex', flexDirection: 'column' }} onClick={() => handleCardClick(product)}>
                                             <CardMedia
                                                 component="img"

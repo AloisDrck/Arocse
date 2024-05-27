@@ -25,9 +25,14 @@ $white: #F0F0F0;
 body {
   margin-left: 5%;
   margin-right: 5%;
-  background: $white;
+  background: url('../../public/img/Arocse.png') no-repeat center center fixed;
+  background-size: cover;
   font-family: $font-1;
   // @include verticalCenter;
+}
+
+body.concept-page {
+  margin-left: 0;
 }
 
 li {

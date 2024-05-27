@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Paper, Stack, styled } from '@mui/material';
+import { Button, Paper, Stack, styled } from '@mui/material';
 import theme from '../styles/theme';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -15,6 +15,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const NameColor = styled('span')(({ theme }) => ({
     color: theme.palette.color3.main,
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+    backgroundColor: theme.palette.color3.main,
+    '&:hover': {
+        backgroundColor: theme.palette.color3.dark,
+    },
+    color: theme.palette.white.main
 }));
 
 const InfosProfil = () => {
@@ -51,8 +59,17 @@ const InfosProfil = () => {
         return <div>Loading...</div>;
     }
 
+    const logout = async () => {
+        try {
+            await axios.post('http://arocseback.cluster-ig3.igpolytech.fr/api/user/logout', {}, { withCredentials: true });
+            window.location.href = '/login';
+        } catch (error) {
+            console.error('Erreur lors de la déconnexion', error);
+        }
+    };
+
     return (
-        <div style={{ marginTop: '100px', position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        <div style={{ marginTop: '100px', position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <Item elevation={24} theme={theme} >
                 <Stack spacing={3} alignItems={'center'}>
                     <h1>Bonjour <NameColor theme={theme}>{user.name}</NameColor> !</h1>
@@ -66,6 +83,9 @@ const InfosProfil = () => {
                             ))}
                         </ul>
                     </div>
+                    <StyledButton onClick={logout} theme={theme}>
+                        Déconnexion
+                    </StyledButton>
                 </Stack>
             </Item>
         </div>

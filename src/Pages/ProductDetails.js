@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Card, CardContent, Typography, Grid, ImageList, ImageListItem, Button, styled } from '@mui/material';
 import ArrowBack from '../Components/ArrowBack';
 import theme from '../styles/theme';
+import axios from 'axios';
+import CartButton from '../Components/CartButton';
 
 const ProductDetails = () => {
     const { state } = useLocation();
     const { product } = state;
+    const [addedToCart, setAddedToCart] = useState(false);
 
     const AddButton = styled(Button)(({ theme }) => ({
         backgroundColor: theme.palette.color3.main
     }));
 
+    const addToCart = async () => {
+        try {
+            await axios.post('http://arocseback.cluster-ig3.igpolytech.fr/api/cart', { productId: product._id, quantity: 1 }, { withCredentials: true });
+            setAddedToCart(true);
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout au panier:', error);
+        }
+    };
+
     return (
         <div>
             <ArrowBack />
+            <CartButton />
             <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '30px' }}>
                 <Grid item xs={12} md={8}>
                     <Card sx={{ maxWidth: 1000, margin: 'auto', alignItems: 'center' }}>
@@ -53,7 +66,8 @@ const ProductDetails = () => {
                                     <AddButton
                                         theme={theme}
                                         variant="contained"
-                                        color="primary"
+                                        onClick={addToCart} // Ajoutez cette ligne pour appeler addToCart lors du clic sur le bouton
+                                        disabled={addedToCart} // Désactivez le bouton si le produit a déjà été ajouté au panier
                                     >
                                         Ajouter au panier
                                     </AddButton>

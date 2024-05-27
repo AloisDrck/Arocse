@@ -8,25 +8,30 @@ import Cart from './Pages/Cart';
 import Register from './Pages/Register';
 import ProductDetails from './Pages/ProductDetails';
 import Login from './Pages/Login';
+import { UserProvider } from './Context/UserContext';
 
 
 
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Game' element={<Game />} />
-        <Route path='/Concept' element={<Concept />} />
-        <Route path='/Profil' element={<Profil />} />
-        <Route path='/Cart' element={<Cart />} />
-        <Route path='/Signin' element={<Login />} />
-        <Route path='/Register' element={<Register />} />
-        <Route path='/product/:idProduct' element={<ProductDetails />} />
-        <Route path='*' element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Game' element={<Game />} />
+          <Route path='/Concept' element={<Concept />} />
+          <Route path='/Profil' element={<Profil />} />
+          <Route path='/Cart' element={<Cart />} />
+          <Route path='/Signin' element={<Login />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/product/:idProduct' element={<ProductDetails />} />
+          <Route path='*' element={<Home />} />
+        </Routes>
+
+      </BrowserRouter>
+    </UserProvider>
   );
 };
 
