@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
+import Header from '../Components/Header';
+import InfoConcept from '../Components/InfoConcept';
 
 const Concept = () => {
     return (
         <div>
-            <Navbar />
-            <h1>Concept</h1>
+            <Header />
+            <InfoConcept />
         </div>
     );
 };

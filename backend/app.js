@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const itemsRoutes = require('./routes/items');
 const userRoutes = require('./routes/user');
 const scoreRoutes = require('./routes/scoreRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const app = express();
 
@@ -38,5 +39,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/items', itemsRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/scores', scoreRoutes);
+app.use('/api/cart', cartRoutes);
 
 module.exports = app;

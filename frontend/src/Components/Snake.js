@@ -156,7 +156,7 @@ const SnakeGame = () => {
             clearInterval(intervalId.current);
             setCurrentScore(snake.length - 2);
             alert("Game Over!\nVotre score : " + (snake.length - 2));
-            setPlayerName(user.name);
+            setPlayerName(user ? user.name : '');
             setShowInput(true);
             init();
             return;

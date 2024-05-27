@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    width: 300vw;
+}
+
+.partie1,
+.partie2,
+.partie3 {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    color: black;
+    height: 100vh;
+    display: flex; // Utilise Flexbox pour centrer les éléments
+    justify-content: center; // Centre horizontalement
+    align-items: center; // Centre verticalement
+    padding-top: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center; // Centre le texte à l'intérieur de Item
+
+}
+
+.partie1 {
+    background-image: url('../../public/img/background01.png');
+}
+
+.partie2 {
+    background-image: url('../../public/img/background02.png');
+}
+
+.partie3 {
+    background-image: url('../../public/img/background03.png');
+}
+
+// Ajuster l'espacement des lignes pour les éléments Item
+.Item {
+    line-height: 1.5; // Ajustez cette valeur pour l'espacement des lignes
+    padding: 20px; // Ajout d'un padding pour aérer l'intérieur des items
+}

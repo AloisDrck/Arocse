@@ -16,8 +16,8 @@ const Header = () => {
             <div className='Header' style={{ height: '87.5px', background: 'rgba(255, 255, 255, 0.9)', position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '1000' }}>
                 <Navbar />
                 <ConnexionButton />
-                <label style={{ fontSize: '3rem', color: '#3C486B' }} onClick={() => { handleNavigation('/Home'); }}>Arocse</label>
-                <hr style={{ border: 'none', borderBottom: '1px solid #e0e0e0', width: '100%', margin: '0' }} />
+                <img src="/img/logoArocse.png" alt="LOGO" style={{ height: '60px', marginTop: '10px' }} onClick={() => { handleNavigation('/Home'); }} />
+                <hr style={{ border: 'none', borderBottom: '1px solid #e0e0e0', width: '100%', marginTop: '-15px' }} />
             </div>
         </ThemeProvider>
     );

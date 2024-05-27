@@ -1,8 +1,9 @@
 import { AlternateEmailRounded, LockTwoTone } from '@mui/icons-material';
 import { Box, Button, Link, Paper, Stack, TextField, styled } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import theme from '../styles/theme';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../Context/UserContext';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -24,6 +25,7 @@ const SigninForm = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Pour la redirection
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,7 +44,8 @@ const SigninForm = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('Connexion réussie', data);
-                navigate('/profile'); // Rediriger l'utilisateur vers la page de profil après connexion réussie
+                setUser(data);
+                navigate('/Profil'); // Rediriger l'utilisateur vers la page de profil après connexion réussie
             } else {
                 console.log("response", response);
                 const errorData = await response.json();
