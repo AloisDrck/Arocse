@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
+const Cart = require('../models/Cart');
 require('dotenv').config();
 
 // Enregistrement
@@ -33,7 +34,14 @@ exports.register = [
 
                 user.refreshToken = refreshToken;
 
-                user.save()
+                // Créez un nouveau panier associé à cet utilisateur
+                const cart = new Cart({
+                    user: user._id,
+                    products: []
+                });
+
+                // Enregistrez le nouvel utilisateur et son panier
+                Promise.all([user.save(), cart.save()])
                     .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
                     .catch(error => res.status(400).json({ error }));
             })
@@ -158,4 +166,12 @@ exports.refreshToken = (req, res) => {
     } catch (err) {
         res.status(403).json({ message: 'Invalid refresh token' });
     }
+};
+
+// Déconnexion
+exports.logout = (req, res) => {
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
+    res.status(200).json({ message: 'Déconnexion réussie!' });
+    console.log("deconnexion réussie");
 };

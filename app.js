@@ -8,11 +8,12 @@ const mongoose = require('mongoose');
 const itemsRoutes = require('./routes/items');
 const userRoutes = require('./routes/user');
 const scoreRoutes = require('./routes/scoreRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const app = express();
 
 const corsOptions = {
-    origin: 'http://arocse.cluster-ig3.igpolytech.fr', // L'origine de votre frontend
+    origin: 'http://localhost:3001', // L'origine de votre frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // Permettre les cookies et les en-têtes d'autorisation
@@ -38,5 +39,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/items', itemsRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/scores', scoreRoutes);
+app.use('/api/cart', cartRoutes);
 
 module.exports = app;
